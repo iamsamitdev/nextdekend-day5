@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { authService } from '@/services/authService'
 import { User } from '@/types/auth'
+import Cookies from 'js-cookie'
 
 export default function Navbar() {
 
@@ -13,10 +14,13 @@ export default function Navbar() {
     const [user, setUser] = useState<User | null>(null) // สร้าง state สำหรับเก็บข้อมูลผู้ใช้
 
     useEffect(() => {
-        const token = localStorage.getItem("accessToken") // ดึงค่า token จาก localStorage
-        const userData = authService.getUser() // ดึงข้อมูลผู้ใช้จาก localStorage
-        setIsLoggedIn(!!token) // !! คือการเปลี่ยนค่าให้เป็น boolean โดยถ้ามีค่าจะเป็น true ถ้าไม่มีค่าจะเป็น false
-        setUser(userData) // กำหนดข้อมูลผู้ใช้ใน state
+        // เปลี่ยนจาก localStorage เป็น cookies
+        const token = Cookies.get('accessToken')
+        const userStr = Cookies.get('user')
+        const userData = userStr ? JSON.parse(userStr) : null
+        
+        setIsLoggedIn(!!token)
+        setUser(userData)
     }, [])
 
     // สร้างฟังก์ชันสำหรับการออกจากระบบ

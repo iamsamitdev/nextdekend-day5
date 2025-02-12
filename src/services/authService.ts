@@ -1,4 +1,5 @@
 import { LoginFormData, AuthTokens, User } from '@/types/auth';
+import Cookies from 'js-cookie';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -27,22 +28,34 @@ export const authService = {
   },
 
   saveTokens(tokens: AuthTokens): void {
-    localStorage.setItem('accessToken', tokens.access);
-    localStorage.setItem('refreshToken', tokens.refresh);
+    Cookies.set('accessToken', tokens.access, {
+      secure: process.env.NODE_ENV === 'production',
+      expires: 7, // 7 days
+      path: '/'
+    });
+    Cookies.set('refreshToken', tokens.refresh, {
+      secure: process.env.NODE_ENV === 'production',
+      expires: 7,
+      path: '/'
+    });
   },
 
   saveUser(user: User): void {
-    localStorage.setItem('user', JSON.stringify(user));
+    Cookies.set('user', JSON.stringify(user), {
+      secure: process.env.NODE_ENV === 'production',
+      expires: 7,
+      path: '/'
+    });
   },
 
   getUser(): User | null {
-    const userStr = localStorage.getItem('user');
+    const userStr = Cookies.get('user');
     return userStr ? JSON.parse(userStr) : null;
   },
 
   clearAuth(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    localStorage.removeItem('user');
+    Cookies.remove('accessToken');
+    Cookies.remove('refreshToken');
+    Cookies.remove('user');
   }
-}; 
+};
