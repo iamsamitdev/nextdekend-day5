@@ -21,7 +21,7 @@ export function useLoginForm() {
       const response = await authService.login(formData)
       authService.saveTokens(response.tokens)
       authService.saveUser(response.user)
-      window.location.href = '/'
+      window.location.href = '/user/dashboard'
     } catch (error) {
       setError('ข้อมูลเข้าสู่ระบบไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง')
       console.error('Login failed:', error)

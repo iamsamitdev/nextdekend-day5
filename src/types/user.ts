@@ -30,31 +30,34 @@ export interface Intern {
 
 // Interface สำหรับข้อมูลการศึกษา
 export interface Education {
+    id?: number;
+    user_id: number;
     level: string;
     institution_name: string;
     faculty?: string;
     field_of_study?: string;
     gpa?: string;
     status: string;
-    user: number;
 }
 
 // Interface สำหรับข้อมูลการฝึกอบรม
 export interface Training {
+    id?: number;
+    user_id: number;
     topic: string;
     details?: string;
     trainer?: string;
     training_date?: string;
-    user: number;
 }
 
 // Interface สำหรับข้อมูลประสบการณ์การทำงาน
 export interface WorkExperience {
+    id?: number;
+    user_id: number;
     position: string;
     company_name: string;
     job_description?: string;
     start_date?: string;
     end_date?: string;
     is_current?: boolean;
-    user: number;
 }

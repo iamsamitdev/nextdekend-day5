@@ -259,7 +259,7 @@ export function ProfileForm() {
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                วันที่
+                เกิดวันที่
               </label>
               <select
                 name="birth_day"
