@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'ค้นหานักศึกษาฝึกงาน | Dekend เว็บหาที่ฝึกงาน หางาน สำหรับนักศึกษา',
+  description: 'ค้นหานักศึกษาฝึกงานที่มีทักษะตรงกับความต้องการของคุณ',
+}
 
 interface Intern {
   id: number

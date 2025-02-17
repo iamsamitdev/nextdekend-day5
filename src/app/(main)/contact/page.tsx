@@ -2,6 +2,13 @@
 
 import { useState } from "react"
 import { toast } from "sonner"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'ติดต่อเรา | Dekend เว็บหาที่ฝึกงาน หางาน สำหรับนักศึกษา',
+  description: 'ติดต่อเราเพื่อสอบถามข้อมูลหรือข้อสงสัย',
+}
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

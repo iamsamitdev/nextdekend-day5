@@ -1,6 +1,12 @@
 'use client'
 
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: 'บทความ | Dekend เว็บหาที่ฝึกงาน หางาน สำหรับนักศึกษา',
+    description: 'บทความที่น่าสนใจเกี่ยวกับการฝึกงานและการทำงาน',
+}
 
 interface Article {
   id: number
